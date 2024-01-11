@@ -1,13 +1,12 @@
 package com.example.seven_drink;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -19,10 +18,52 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_start); // Изменено на новый макет
 
-        // Загружаем изображения карт в список
+        // Инициализация изображений карт
+        initializeCardImages();
+
+        // Перемешиваем карты
+        Collections.shuffle(cardImages);
+
+        // Находим ImageView в макете
+        final ImageView imageView = findViewById(R.id.imageView);
+
+        // Кнопка для отображения следующей карты
+        Button nextButton = findViewById(R.id.nextButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (currentIndex < cardImages.size()) {
+                    // Отображаем следующую карту
+                    Intent intent = new Intent(MainActivity.this, DisplayCardActivity.class);
+                    intent.putExtra("cardImage", cardImages.get(currentIndex));
+                    startActivity(intent);
+                    currentIndex++;
+                } else {
+                    // Если все карты показаны, выведите сообщение
+                    Toast.makeText(MainActivity.this, "Все карты были использованы", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+    public void onStartButtonClick(View view) {
+        // В этом методе вы можете добавить код, который будет выполняться при нажатии кнопки "Начать"
+        if (currentIndex < cardImages.size()) {
+            // Отображаем следующую карту
+            Intent intent = new Intent(this, DisplayCardActivity.class);
+            intent.putExtra("cardImage", cardImages.get(currentIndex));
+            startActivity(intent);
+            currentIndex++;
+        } else {
+            // Если все карты показаны, выведите сообщение
+            Toast.makeText(this, "Все карты были использованы", Toast.LENGTH_SHORT).show();
+        }
+    }
+    // Добавлен новый метод для инициализации изображений карт
+    private void initializeCardImages() {
         cardImages = Arrays.asList(
                 R.drawable.card6_1,
                 R.drawable.card6_2,
@@ -61,27 +102,5 @@ public class MainActivity extends AppCompatActivity {
                 R.drawable.cardt_3,
                 R.drawable.cardt_4
         );
-
-        // Перемешиваем карты
-        Collections.shuffle(cardImages);
-
-        // Находим ImageView в макете
-        final ImageView imageView = findViewById(R.id.imageView);
-
-        // Кнопка для отображения следующей карты
-        Button nextButton = findViewById(R.id.nextButton);
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (currentIndex < cardImages.size()) {
-                    // Отображаем следующую карту
-                    imageView.setImageResource(cardImages.get(currentIndex));
-                    currentIndex++;
-                } else {
-                    // Если все карты показаны, выведите сообщение
-                    Toast.makeText(MainActivity.this, "Все карты были использованы", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
     }
 }
