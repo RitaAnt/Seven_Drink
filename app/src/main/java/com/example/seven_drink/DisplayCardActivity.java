@@ -17,7 +17,7 @@ import java.util.List;
 
 public class DisplayCardActivity extends AppCompatActivity {
 
-    private List<Integer> doubledAndShuffledCardImages;
+    private List<Integer> quadrupledAndShuffledCardImages;
     private int currentIndex = 0;
     private ImageView imageView;
 
@@ -31,12 +31,12 @@ public class DisplayCardActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_display_card);
-        initializeDoubledAndShuffledCardImages();
+        initializeQuadrupledAndShuffledCardImages();
         imageView = findViewById(R.id.imageView);
         showNextCard();
     }
 
-    private void initializeDoubledAndShuffledCardImages() {
+    private void initializeQuadrupledAndShuffledCardImages() {
         List<Integer> cardImages = Arrays.asList(
                 R.drawable.card6,
                 R.drawable.card7,
@@ -45,26 +45,31 @@ public class DisplayCardActivity extends AppCompatActivity {
         );
 
         // Удваиваем карты
-        doubledAndShuffledCardImages = new ArrayList<>(cardImages);
-        doubledAndShuffledCardImages.addAll(cardImages);
+        List<Integer> temp = new ArrayList<>(cardImages);
+        temp.addAll(cardImages);
+
+        // Удваиваем ещё раз
+        List<Integer> doubledTemp = new ArrayList<>(temp);
+        doubledTemp.addAll(temp);
 
         // Перемешиваем
-        Collections.shuffle(doubledAndShuffledCardImages);
+        quadrupledAndShuffledCardImages = new ArrayList<>(doubledTemp);
+        Collections.shuffle(quadrupledAndShuffledCardImages);
     }
 
     private void showNextCard() {
-        if (currentIndex < doubledAndShuffledCardImages.size()) {
-            imageView.setImageResource(doubledAndShuffledCardImages.get(currentIndex));
+        if (currentIndex < quadrupledAndShuffledCardImages.size()) {
+            imageView.setImageResource(quadrupledAndShuffledCardImages.get(currentIndex));
             currentIndex++;
         }
     }
 
     public void onNextButtonClick(View view) {
-        if (currentIndex < doubledAndShuffledCardImages.size()) {
+        if (currentIndex < quadrupledAndShuffledCardImages.size()) {
             Animation fadeOut = AnimationUtils.loadAnimation(this, R.anim.fade_out);
             imageView.startAnimation(fadeOut);
 
-            imageView.setImageResource(doubledAndShuffledCardImages.get(currentIndex));
+            imageView.setImageResource(quadrupledAndShuffledCardImages.get(currentIndex));
             currentIndex++;
 
             Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
