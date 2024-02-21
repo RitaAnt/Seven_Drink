@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             initializeCardImages();
             List<Integer> doubledCardImages = new ArrayList<>(cardImages);
-            doubledCardImages.addAll(cardImages); // Удваиваем карты
+            doubledCardImages.addAll(cardImages);
             Collections.shuffle(doubledCardImages);
             Collections.shuffle(doubledCardImages);
 

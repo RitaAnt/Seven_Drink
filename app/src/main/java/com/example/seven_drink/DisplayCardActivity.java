@@ -48,15 +48,12 @@ public class DisplayCardActivity extends AppCompatActivity {
                 R.drawable.cardt
         );
 
-        // Удваиваем карты
         List<Integer> temp = new ArrayList<>(cardImages);
         temp.addAll(cardImages);
 
-        // Удваиваем ещё раз
         List<Integer> doubledTemp = new ArrayList<>(temp);
         doubledTemp.addAll(temp);
 
-        // Перемешиваем
         quadrupledAndShuffledCardImages = new ArrayList<>(doubledTemp);
         Collections.shuffle(quadrupledAndShuffledCardImages);
         Collections.shuffle(quadrupledAndShuffledCardImages);
