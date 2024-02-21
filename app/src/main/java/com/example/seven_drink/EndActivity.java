@@ -16,7 +16,7 @@ public class EndActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent restartIntent = new Intent(EndActivity.this, MainActivity.class);
                 startActivity(restartIntent);
-                overridePendingTransition(R.anim.scale_in, R.anim.scale_out);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 finish();
             }
         });

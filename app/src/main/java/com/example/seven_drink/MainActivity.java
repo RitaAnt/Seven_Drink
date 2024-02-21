@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, DisplayCardActivity.class);
                     intent.putExtra("cardImage", cardImages.get(currentIndex));
                     startActivity(intent);
-                    overridePendingTransition(R.anim.scale_in, R.anim.scale_out);
+                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                     currentIndex++;
                 }
             });
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, DisplayCardActivity.class);
             intent.putExtra("cardImage", cardImages.get(currentIndex));
             startActivity(intent);
-            overridePendingTransition(R.anim.scale_in, R.anim.scale_out);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             currentIndex++;
         }
     }
