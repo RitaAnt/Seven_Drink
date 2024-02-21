@@ -36,18 +36,16 @@ public class MainActivity extends AppCompatActivity {
             Collections.shuffle(doubledCardImages);
 
             Button nextButton = findViewById(R.id.nextButton);
-            nextButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (currentIndex < doubledCardImages.size()) {
-                        Intent intent = new Intent(MainActivity.this, DisplayCardActivity.class);
-                        intent.putExtra("cardImage", doubledCardImages.get(currentIndex));
-                        startActivity(intent);
-                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-                        currentIndex++;
-                    }
+            nextButton.setOnClickListener(v -> {
+                if (currentIndex < doubledCardImages.size()) {
+                    Intent intent = new Intent(MainActivity.this, DisplayCardActivity.class);
+                    intent.putExtra("cardImage", doubledCardImages.get(currentIndex));
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                    currentIndex++;
                 }
             });
+
         } catch (Exception e) {
             e.printStackTrace();
         }

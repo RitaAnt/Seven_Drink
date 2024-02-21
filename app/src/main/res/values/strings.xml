@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Семёрочка</string>
+    <string name="display_image_content_description">Карта с заданием</string>
+    <string name="start_image_content_description">Приветственное изображение</string>
+    <string name="end_image_content_description">Поздравление с пройденной игрой</string>
     <string name="start_button_text">Начать</string>
     <string name="next_button_text">Следующая карта</string>
     <string name="end_button_text">Повторить</string>

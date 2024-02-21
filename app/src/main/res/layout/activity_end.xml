@@ -13,7 +13,7 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             android:src="@drawable/end_image"
-            android:contentDescription="Поздравление с пройденной игрой" />
+            android:contentDescription="@string/end_image_content_description" />
 
         <Button
             android:id="@+id/replayButton"

@@ -11,7 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:contentDescription="Карта с заданием" />
+            android:contentDescription="@string/display_image_content_description" />
 
         <Button
             android:id="@+id/nextButton"

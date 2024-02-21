@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:src="@drawable/start_background"
-        android:contentDescription="Приветственное изображение" />
+        android:contentDescription="@string/start_image_content_description" />
 
     <Button
         android:id="@+id/startButton"
