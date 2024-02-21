@@ -3,9 +3,9 @@ package com.example.seven_drink;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.Arrays;
 import java.util.Collections;
@@ -16,91 +16,43 @@ public class DisplayCardActivity extends AppCompatActivity {
     private List<Integer> cardImages;
     private int currentIndex = 0;
     private ImageView imageView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
+
         setContentView(R.layout.activity_display_card);
-
-        // Инициализируем изображения карт
         initializeAndShuffleCardImages();
-
-        // Находим ImageView в макете
         imageView = findViewById(R.id.imageView);
-
-        // Отображаем первую карту
         showNextCard();
     }
 
-    // Инициализация изображений карт
     private void initializeAndShuffleCardImages() {
         cardImages = Arrays.asList(
                 R.drawable.card6,
                 R.drawable.card7,
                 R.drawable.card8,
                 R.drawable.card9
-//                R.drawable.card6_3,
-//                R.drawable.card6_4,
-//                R.drawable.card7_1,
-//                R.drawable.card7_2,
-//                R.drawable.card7_3,
-//                R.drawable.card7_4,
-//                R.drawable.card8_1,
-//                R.drawable.card8_2,
-//                R.drawable.card8_3,
-//                R.drawable.card8_4,
-//                R.drawable.card9_1,
-//                R.drawable.card9_2,
-//                R.drawable.card9_3,
-//                R.drawable.card9_4,
-//                R.drawable.card10_1,
-//                R.drawable.card10_2,
-//                R.drawable.card10_3,
-//                R.drawable.card10_4,
-//                R.drawable.cardj_1,
-//                R.drawable.cardj_2,
-//                R.drawable.cardj_3,
-//                R.drawable.cardj_4,
-//                R.drawable.cardq_1,
-//                R.drawable.cardq_2,
-//                R.drawable.cardq_3,
-//                R.drawable.cardq_4,
-//                R.drawable.cardk_1,
-//                R.drawable.cardk_2,
-//                R.drawable.cardk_3,
-//                R.drawable.cardk_4,
-//                R.drawable.cardt_1,
-//                R.drawable.cardt_2,
-//                R.drawable.cardt_3,
-//                R.drawable.cardt_4
         );
         Collections.shuffle(cardImages);
     }
 
-    // Метод для отображения следующей карты
     private void showNextCard() {
         if (currentIndex < cardImages.size()) {
-            // Отображаем текущую карту
             imageView.setImageResource(cardImages.get(currentIndex));
-
-            // Увеличиваем индекс для следующей карты
             currentIndex++;
-        } else {
-            // Если все карты показаны, выведите сообщение
-            Toast.makeText(this, "Все карты были использованы", Toast.LENGTH_SHORT).show();
         }
     }
 
-    // Обработчик нажатия кнопки "Следующая карта"
     public void onNextButtonClick(View view) {
         if (currentIndex < cardImages.size() - 1) {
-            // Если текущий индекс меньше размера списка минус один,
-            // отображаем следующую карту и увеличиваем currentIndex
             currentIndex++;
             imageView.setImageResource(cardImages.get(currentIndex));
         } else {
-            // Если все карты показаны, переходим на EndActivity
             Intent endIntent = new Intent(this, EndActivity.class);
             startActivity(endIntent);
         }
