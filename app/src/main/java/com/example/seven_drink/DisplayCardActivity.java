@@ -100,8 +100,9 @@ public class DisplayCardActivity extends AppCompatActivity {
             currentIndex++;
             imageView.setImageResource(cardImages.get(currentIndex));
         } else {
-            // Если все карты уже показаны, выведите сообщение
-            Toast.makeText(this, "Все карты были использованы", Toast.LENGTH_SHORT).show();
+            // Если все карты показаны, переходим на EndActivity
+            Intent endIntent = new Intent(this, EndActivity.class);
+            startActivity(endIntent);
         }
     }
 
