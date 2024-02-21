@@ -55,11 +55,9 @@ public class DisplayCardActivity extends AppCompatActivity {
             Animation fadeOut = AnimationUtils.loadAnimation(this, R.anim.fade_out);
             imageView.startAnimation(fadeOut);
 
-            // Устанавливаем новую карту
             imageView.setImageResource(cardImages.get(currentIndex));
             currentIndex++;
 
-            // Запускаем анимацию появления
             Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
             imageView.startAnimation(fadeIn);
         } else {
