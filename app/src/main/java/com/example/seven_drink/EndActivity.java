@@ -16,6 +16,7 @@ public class EndActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent restartIntent = new Intent(EndActivity.this, MainActivity.class);
                 startActivity(restartIntent);
+                overridePendingTransition(0, 0);
                 finish();
             }
         });

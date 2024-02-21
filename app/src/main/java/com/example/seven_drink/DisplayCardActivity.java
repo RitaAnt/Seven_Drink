@@ -3,6 +3,8 @@ package com.example.seven_drink;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.ActionBar;
@@ -50,11 +52,20 @@ public class DisplayCardActivity extends AppCompatActivity {
 
     public void onNextButtonClick(View view) {
         if (currentIndex < cardImages.size() - 1) {
-            currentIndex++;
+            Animation fadeOut = AnimationUtils.loadAnimation(this, R.anim.fade_out);
+            imageView.startAnimation(fadeOut);
+
+            // Устанавливаем новую карту
             imageView.setImageResource(cardImages.get(currentIndex));
+            currentIndex++;
+
+            // Запускаем анимацию появления
+            Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+            imageView.startAnimation(fadeIn);
         } else {
             Intent endIntent = new Intent(this, EndActivity.class);
             startActivity(endIntent);
+            overridePendingTransition(0, 0);
         }
     }
 
