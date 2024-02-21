@@ -11,14 +11,12 @@ public class EndActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end);
-        findViewById(R.id.replayButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent restartIntent = new Intent(EndActivity.this, MainActivity.class);
-                startActivity(restartIntent);
-                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-                finish();
-            }
+        findViewById(R.id.replayButton).setOnClickListener(v -> {
+            Intent restartIntent = new Intent(EndActivity.this, MainActivity.class);
+            startActivity(restartIntent);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            finish();
         });
     }
+
 }

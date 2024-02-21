@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/start_background" />
+        android:src="@drawable/start_background"
+        android:contentDescription="Приветственное изображение" />
 
     <Button
         android:id="@+id/startButton"
@@ -30,6 +31,6 @@
         android:textColor="@color/colorText"
 
         android:onClick="onStartButtonClick"
-        android:text="Начать" />
+        android:text="@string/start_button_text" />
 
 </RelativeLayout>
