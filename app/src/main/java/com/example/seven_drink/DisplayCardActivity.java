@@ -41,7 +41,11 @@ public class DisplayCardActivity extends AppCompatActivity {
                 R.drawable.card6,
                 R.drawable.card7,
                 R.drawable.card8,
-                R.drawable.card9
+                R.drawable.card9,
+                R.drawable.cardj,
+                R.drawable.cardq,
+                R.drawable.cardk,
+                R.drawable.cardt
         );
 
         // Удваиваем карты
@@ -54,6 +58,8 @@ public class DisplayCardActivity extends AppCompatActivity {
 
         // Перемешиваем
         quadrupledAndShuffledCardImages = new ArrayList<>(doubledTemp);
+        Collections.shuffle(quadrupledAndShuffledCardImages);
+        Collections.shuffle(quadrupledAndShuffledCardImages);
         Collections.shuffle(quadrupledAndShuffledCardImages);
     }
 

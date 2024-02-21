@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
             List<Integer> doubledCardImages = new ArrayList<>(cardImages);
             doubledCardImages.addAll(cardImages); // Удваиваем карты
             Collections.shuffle(doubledCardImages);
+            Collections.shuffle(doubledCardImages);
 
             Button nextButton = findViewById(R.id.nextButton);
             nextButton.setOnClickListener(new View.OnClickListener() {
@@ -67,7 +68,11 @@ public class MainActivity extends AppCompatActivity {
                 R.drawable.card6,
                 R.drawable.card7,
                 R.drawable.card8,
-                R.drawable.card9
+                R.drawable.card9,
+                R.drawable.cardj,
+                R.drawable.cardq,
+                R.drawable.cardk,
+                R.drawable.cardt
         );
     }
 }
