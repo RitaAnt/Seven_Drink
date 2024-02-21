@@ -9,15 +9,18 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class DisplayCardActivity extends AppCompatActivity {
 
-    private List<Integer> doubledCardImages;
+    private List<Integer> doubledAndShuffledCardImages;
     private int currentIndex = 0;
     private ImageView imageView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,34 +31,40 @@ public class DisplayCardActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_display_card);
-        initializeAndShuffleCardImages();
+        initializeDoubledAndShuffledCardImages();
         imageView = findViewById(R.id.imageView);
         showNextCard();
     }
 
-    private void initializeAndShuffleCardImages() {
-        doubledCardImages = Arrays.asList(
+    private void initializeDoubledAndShuffledCardImages() {
+        List<Integer> cardImages = Arrays.asList(
                 R.drawable.card6,
                 R.drawable.card7,
                 R.drawable.card8,
                 R.drawable.card9
         );
-        Collections.shuffle(doubledCardImages);
+
+        // Удваиваем карты
+        doubledAndShuffledCardImages = new ArrayList<>(cardImages);
+        doubledAndShuffledCardImages.addAll(cardImages);
+
+        // Перемешиваем
+        Collections.shuffle(doubledAndShuffledCardImages);
     }
 
     private void showNextCard() {
-        if (currentIndex < doubledCardImages.size()) {
-            imageView.setImageResource(doubledCardImages.get(currentIndex));
+        if (currentIndex < doubledAndShuffledCardImages.size()) {
+            imageView.setImageResource(doubledAndShuffledCardImages.get(currentIndex));
             currentIndex++;
         }
     }
 
     public void onNextButtonClick(View view) {
-        if (currentIndex < doubledCardImages.size() * 2) {
+        if (currentIndex < doubledAndShuffledCardImages.size()) {
             Animation fadeOut = AnimationUtils.loadAnimation(this, R.anim.fade_out);
             imageView.startAnimation(fadeOut);
 
-            imageView.setImageResource(doubledCardImages.get(currentIndex % doubledCardImages.size()));
+            imageView.setImageResource(doubledAndShuffledCardImages.get(currentIndex));
             currentIndex++;
 
             Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
@@ -66,5 +75,4 @@ public class DisplayCardActivity extends AppCompatActivity {
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }
     }
-
 }
