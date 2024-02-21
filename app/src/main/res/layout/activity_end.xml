@@ -25,7 +25,7 @@
 
             android:background="@drawable/rounded_button"
             android:textStyle="bold|italic"
-
+            android:textColor="@color/colorText"
 
             android:text="Повторить" />
 

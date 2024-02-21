@@ -18,7 +18,10 @@
         </activity>
 
         <activity android:name=".DisplayCardActivity" />
-        <activity android:name=".EndActivity" />
+        <activity
+            android:name=".EndActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

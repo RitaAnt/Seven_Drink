@@ -30,6 +30,7 @@
 
             android:background="@drawable/rounded_button"
             android:textStyle="bold|italic"
+            android:textColor="@color/colorText"
 
             android:onClick="onNextButtonClick"
             android:text="Следующая карта" />
