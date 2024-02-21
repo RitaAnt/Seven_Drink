@@ -8,8 +8,20 @@
         android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Начать"
-        android:onClick="onStartButtonClick" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+
+        android:textSize="20sp"
+        android:padding="18dp"
+
+        android:layout_marginStart="123dp"
+        android:layout_marginEnd="123dp"
+        android:layout_marginBottom="64dp"
+
+        android:background="@drawable/rounded_button"
+        android:textStyle="bold|italic"
+
+        android:onClick="onStartButtonClick"
+        android:text="Начать" />
 
 </RelativeLayout>

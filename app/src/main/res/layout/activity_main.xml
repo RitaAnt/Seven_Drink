@@ -12,11 +12,6 @@
         android:scaleType="centerCrop"
         android:src="@drawable/ic_launcher_foreground" />
 
-    <Button
-        android:id="@+id/nextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Следующая карта" />
+
 
 </RelativeLayout>

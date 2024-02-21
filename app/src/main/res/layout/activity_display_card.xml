@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <!-- res/layout/activity_display_card.xml -->
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -12,13 +12,27 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop" />
+
         <Button
             android:id="@+id/nextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Следующая карта"
-            android:onClick="onNextButtonClick"/>
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+
+            android:textSize="20sp"
+            android:padding="18dp"
+
+            android:layout_marginStart="123dp"
+            android:layout_marginEnd="123dp"
+            android:layout_marginBottom="64dp"
+
+            android:background="@drawable/rounded_button"
+            android:textStyle="bold|italic"
+
+            android:onClick="onNextButtonClick"
+            android:text="Следующая карта" />
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

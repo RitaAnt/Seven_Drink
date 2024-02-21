@@ -4,4 +4,5 @@
     <solid
         android:textColor="@color/colorText"
         android:color="@color/white"/> <!-- Указываем цвет фона -->
+
 </shape>
