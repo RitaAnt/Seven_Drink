@@ -63,7 +63,7 @@ public class DisplayCardActivity extends AppCompatActivity {
         } else {
             Intent endIntent = new Intent(this, EndActivity.class);
             startActivity(endIntent);
-            overridePendingTransition(0, 0);
+            overridePendingTransition(R.anim.scale_in, R.anim.scale_out);
         }
     }
 
