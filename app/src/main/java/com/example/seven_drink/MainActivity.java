@@ -11,7 +11,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import android.widget.Button;
-import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void onStartButtonClick(View view) {
         if (currentIndex < cardImages.size()) {
-            // Отображаем следующую карту
             Intent intent = new Intent(this, DisplayCardActivity.class);
             intent.putExtra("cardImage", cardImages.get(currentIndex));
             startActivity(intent);

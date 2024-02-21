@@ -9,6 +9,6 @@
     <color name="white">#FDFBF5</color>
     <color name="colorText">#2E2B2B</color>
     <color name="colorPrimary">#703620</color>
-    <color name="colorPrimaryDark">#FDFBF5</color>
+    <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#FFCF35</color>
 </resources>
