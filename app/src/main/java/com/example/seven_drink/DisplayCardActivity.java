@@ -15,7 +15,7 @@ import java.util.List;
 
 public class DisplayCardActivity extends AppCompatActivity {
 
-    private List<Integer> cardImages;
+    private List<Integer> doubledCardImages;
     private int currentIndex = 0;
     private ImageView imageView;
     @Override
@@ -34,28 +34,28 @@ public class DisplayCardActivity extends AppCompatActivity {
     }
 
     private void initializeAndShuffleCardImages() {
-        cardImages = Arrays.asList(
+        doubledCardImages = Arrays.asList(
                 R.drawable.card6,
                 R.drawable.card7,
                 R.drawable.card8,
                 R.drawable.card9
         );
-        Collections.shuffle(cardImages);
+        Collections.shuffle(doubledCardImages);
     }
 
     private void showNextCard() {
-        if (currentIndex < cardImages.size()) {
-            imageView.setImageResource(cardImages.get(currentIndex));
+        if (currentIndex < doubledCardImages.size()) {
+            imageView.setImageResource(doubledCardImages.get(currentIndex));
             currentIndex++;
         }
     }
 
     public void onNextButtonClick(View view) {
-        if (currentIndex < cardImages.size() - 1) {
+        if (currentIndex < doubledCardImages.size() * 2) {
             Animation fadeOut = AnimationUtils.loadAnimation(this, R.anim.fade_out);
             imageView.startAnimation(fadeOut);
 
-            imageView.setImageResource(cardImages.get(currentIndex));
+            imageView.setImageResource(doubledCardImages.get(currentIndex % doubledCardImages.size()));
             currentIndex++;
 
             Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);

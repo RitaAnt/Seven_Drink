@@ -7,6 +7,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.ActionBar;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -29,23 +30,27 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             initializeCardImages();
-            Collections.shuffle(cardImages);
-
+            List<Integer> doubledCardImages = new ArrayList<>(cardImages);
+            doubledCardImages.addAll(cardImages); // Удваиваем карты
+            Collections.shuffle(doubledCardImages);
 
             Button nextButton = findViewById(R.id.nextButton);
             nextButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, DisplayCardActivity.class);
-                    intent.putExtra("cardImage", cardImages.get(currentIndex));
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-                    currentIndex++;
+                    if (currentIndex < doubledCardImages.size()) {
+                        Intent intent = new Intent(MainActivity.this, DisplayCardActivity.class);
+                        intent.putExtra("cardImage", doubledCardImages.get(currentIndex));
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                        currentIndex++;
+                    }
                 }
             });
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     public void onStartButtonClick(View view) {
