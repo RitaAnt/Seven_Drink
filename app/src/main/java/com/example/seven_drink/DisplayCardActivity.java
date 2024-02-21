@@ -1,13 +1,12 @@
 package com.example.seven_drink;
 
+import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
-
+import androidx.appcompat.app.AppCompatActivity;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -37,42 +36,44 @@ public class DisplayCardActivity extends AppCompatActivity {
     // Инициализация изображений карт
     private void initializeAndShuffleCardImages() {
         cardImages = Arrays.asList(
-                R.drawable.card6_1,
-                R.drawable.card6_2,
-                R.drawable.card6_3,
-                R.drawable.card6_4,
-                R.drawable.card7_1,
-                R.drawable.card7_2,
-                R.drawable.card7_3,
-                R.drawable.card7_4,
-                R.drawable.card8_1,
-                R.drawable.card8_2,
-                R.drawable.card8_3,
-                R.drawable.card8_4,
-                R.drawable.card9_1,
-                R.drawable.card9_2,
-                R.drawable.card9_3,
-                R.drawable.card9_4,
-                R.drawable.card10_1,
-                R.drawable.card10_2,
-                R.drawable.card10_3,
-                R.drawable.card10_4,
-                R.drawable.cardj_1,
-                R.drawable.cardj_2,
-                R.drawable.cardj_3,
-                R.drawable.cardj_4,
-                R.drawable.cardq_1,
-                R.drawable.cardq_2,
-                R.drawable.cardq_3,
-                R.drawable.cardq_4,
-                R.drawable.cardk_1,
-                R.drawable.cardk_2,
-                R.drawable.cardk_3,
-                R.drawable.cardk_4,
-                R.drawable.cardt_1,
-                R.drawable.cardt_2,
-                R.drawable.cardt_3,
-                R.drawable.cardt_4
+                R.drawable.card6,
+                R.drawable.card7,
+                R.drawable.card8,
+                R.drawable.card9
+//                R.drawable.card6_3,
+//                R.drawable.card6_4,
+//                R.drawable.card7_1,
+//                R.drawable.card7_2,
+//                R.drawable.card7_3,
+//                R.drawable.card7_4,
+//                R.drawable.card8_1,
+//                R.drawable.card8_2,
+//                R.drawable.card8_3,
+//                R.drawable.card8_4,
+//                R.drawable.card9_1,
+//                R.drawable.card9_2,
+//                R.drawable.card9_3,
+//                R.drawable.card9_4,
+//                R.drawable.card10_1,
+//                R.drawable.card10_2,
+//                R.drawable.card10_3,
+//                R.drawable.card10_4,
+//                R.drawable.cardj_1,
+//                R.drawable.cardj_2,
+//                R.drawable.cardj_3,
+//                R.drawable.cardj_4,
+//                R.drawable.cardq_1,
+//                R.drawable.cardq_2,
+//                R.drawable.cardq_3,
+//                R.drawable.cardq_4,
+//                R.drawable.cardk_1,
+//                R.drawable.cardk_2,
+//                R.drawable.cardk_3,
+//                R.drawable.cardk_4,
+//                R.drawable.cardt_1,
+//                R.drawable.cardt_2,
+//                R.drawable.cardt_3,
+//                R.drawable.cardt_4
         );
         Collections.shuffle(cardImages);
     }
@@ -93,6 +94,15 @@ public class DisplayCardActivity extends AppCompatActivity {
 
     // Обработчик нажатия кнопки "Следующая карта"
     public void onNextButtonClick(View view) {
-        showNextCard();
+        if (currentIndex < cardImages.size() - 1) {
+            // Если текущий индекс меньше размера списка минус один,
+            // отображаем следующую карту и увеличиваем currentIndex
+            currentIndex++;
+            imageView.setImageResource(cardImages.get(currentIndex));
+        } else {
+            // Если все карты уже показаны, выведите сообщение
+            Toast.makeText(this, "Все карты были использованы", Toast.LENGTH_SHORT).show();
+        }
     }
+
 }
